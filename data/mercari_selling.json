@@ -2,19 +2,36 @@
     {
         "id": "SDHUI3FI98",
         "asin": "B07X779ZK5",
-        "status": "old",
-        "href": "https://www.mercari.com/jp/items/m54209662507"
+        "status": "soldout",
+        "mercariPrice": 0,
+        "mercariId": "m54209662507"
     },
     {
         "id": "RDFIO30IOD",
         "asin": "B07X779ZK5",
-        "status": "old",
-        "href": "https://www.mercari.com/jp/items/m83262828394"
+        "status": "soldout",
+        "mercariPrice": 0,
+        "mercariId": "m83262828394"
     },
     {
         "id": "IPNHIR80RI",
         "asin": "B07X779ZK5",
-        "status": "old",
-        "href": "https://www.mercari.com/jp/items/m80385506493"
+        "status": "soldout",
+        "mercariPrice": 0,
+        "mercariId": "m80385506493"
+    },
+    {
+        "id": "F5IN30YZR9",
+        "asin": "B07V5NC4FD",
+        "status": "selling",
+        "mercariPrice": 33000,
+        "mercariId": "m43995817534"
+    },
+    {
+        "id": "3T5UAJYYGG",
+        "asin": "B07V5NC4FD",
+        "status": "selling",
+        "mercariPrice": 33000,
+        "mercariId": "m43995817534"
     }
 ]
