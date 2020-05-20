@@ -1,0 +1,28 @@
+mercari_selling.json 記述法
+{
+    "id": "半角英数字大文字の10文字 - 自動生成する仕組みにする",
+    "name": "Amazonの正式商品名を保存する"
+    "asin": "Amazonの商品ID",
+    "status": "selling or soldout - 販売状況を保存",
+    "mercariPrice": int型でメルカリの商品価格を保存,
+    "mnratePrice": int型でモノレートの商品価格を保存,
+    "mercariId": "メルカリの商品ID"
+}
+// 例
+{
+    "id": "SDHUI3FI98",
+    "name": "/x23re/sdfcs/we3we/srw3",
+    "asin": "B07X779ZK5",
+    "status": "soldout",
+    "mercariPrice": 2580,
+    "mnratePrice": 0,
+    "mercariId": "m54209662507"
+}
+
+登録時に保存するデータ
+・JSON
+
+常時取得するデータ
+・情報を取得した日時
+・金額
+商品状態 - 売り切れ

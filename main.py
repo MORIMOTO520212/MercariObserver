@@ -37,27 +37,27 @@ def MONORATE(asin):
     driver.get('https://mnrate.com/item/aid/'+asin)
     return FIND_TEXT_BY_CSS_SELECTOR('.price.used_price_color._btn_size_style.item_conditions_data_box')
 
+
 def BOT(data):
     driver.get("https://www.mercari.com/jp/items/"+data)
     mer_slt_status   = FIND_CLASS_NAME('item-buy-btn')
     mer_slt_price    = FIND_CLASS_NAME('item-price')
     mer_slt_price    = mer_slt_price.replace('¥','').replace(',','')
 
-    if 'disabled' in mer_slt_status:
-        # 売り切れた場合
+    if 'disabled' in mer_slt_status: # 売り切れた場合
         return 'soldOut'
 
     mnrate_low_price = MONORATE(mer_slt_d['asin'])
     mnrate_low_price = mnrate_low_price.replace('￥','').replace(',','')
 
     if mer_slt_price > mnrate_low_price: # 金額がモノレート最低金額よりも高くなった場合
-        return 'than{}'.format(int(mer_slt_price)-int(mnrate_low_price))
+        return 'than{}'.format(int(mer_slt_price)-int(mnrate_low_price)) # この時点で削除
     
     if mer_slt_price < mnrate_low_price: # 金額がモノレート最低金額よりも低くなった場合
         return 'down{}'.format(int(mnrate_low_price)-int(mer_slt_price))
 
     if mer_slt_price == mnrate_low_price: # 金額が同じ場合
-        return 0
+        return 0 # この時点で削除
 
 
 if __name__=='__main__':
@@ -65,7 +65,7 @@ if __name__=='__main__':
         mer_sel_d = json.load(f)
 
     for mer_slt_d in mer_sel_d:
-        mercariId = mer_slt_d['mercariId']
+        mercariId = mer_slt_d['mercariId'] # mercariId - DictData
 
         if mer_slt_d['status']!='soldout':
             bot_result = BOT(mercariId) # スクレイピングで商品の状態を確認する

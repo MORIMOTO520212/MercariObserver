@@ -1,21 +1,32 @@
-import json, requests
-from bs4 import BeautifulSoup
+import os, json, random, string, selenium
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
+from time import sleep
 
-html = requests.get("https://mnrate.com/item/aid/B07X779ZK5")
-soup = BeautifulSoup(html.text, "html.parser")
+PROFILEPATH = 'userdata'
 
-with open('soup.txt', 'w') as f:
-    f.write(str(soup))
+options = webdriver.ChromeOptions()
+options.add_argument('--user-data-dir=' + PROFILEPATH)
+driver = webdriver.Chrome(options=options)
 
-'''
-for scriptdata in soup.find_all("script"):
-    print('load {}\n\n'.format(str(scriptdata)[:100]))
-    if "server_data" in str(scriptdata):
-        mnrate = scriptdata.split(';')[0].split('\'')[1]
-        break
+def FIND_CLASS_NAME(name):
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME, name)))
+    return driver.find_element_by_class_name(name).get_attribute('class')
 
-mnrate_data = {}
-mnrate_data = json.loads(mnrate)
+def FIND_TEXT_BY_CLASS_NAME(name):
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME, name)))
+    return driver.find_element_by_class_name(name).get_attribute("textContent")
 
-print(mnrate_data["summary"]["data_name"])
-'''
+def FIND_TEXT_BY_CSS_SELECTOR(name):
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, name)))
+    return driver.find_element_by_css_selector(name).get_attribute("textContent")
+
+
+driver.get("https://www.mercari.com/jp/items/"+'m43995817534')
+
+mer_slt_status   = FIND_CLASS_NAME('item-buy-btn')
+mer_slt_price    = FIND_TEXT_BY_CLASS_NAME('item-price')
+mer_slt_price    = mer_slt_price.replace('¥','').replace(',','')
+print(mer_slt_price)

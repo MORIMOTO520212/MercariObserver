@@ -45,19 +45,21 @@ def MONORATE(asin):
         print('ASINが正しく指定されていません。')
         return False
     driver.get('https://mnrate.com/item/aid/'+asin)
-    return FIND_TEXT_BY_CSS_SELECTOR('.price.used_price_color._btn_size_style.item_conditions_data_box')
+    price = FIND_TEXT_BY_CSS_SELECTOR('.price.used_price_color._btn_size_style.item_conditions_data_box')
+    name  = FIND_TEXT_BY_CSS_SELECTOR('h3 a.original_link')
+    return price, name
 
 def main():
     with open(setting['mercari_selling'], 'r') as f:
         MERCARIDATA = json.load(f)
 
-    while True: # ASIN #
+    while True: # INPUT ASIN #
         asin = input('ASIN >').replace('\n','')
         if asin == 'help': print('<ANS> ASINの確認方法はモノレートから商品を検索してください。')
         elif len(asin) != 10: print('不正な入力です。')
         else: break
     
-    while True: # mercari ID #
+    while True: # INPUT mercariID #
         mercariId = input('mercari ID >').replace('\n','')
         if mercariId == 'help': print('<ANS> mercariIdの確認方法はメルカリの商品ページのリンクにあります。')
         elif len(mercariId) != 12: print('不正な入力です。')
@@ -74,7 +76,7 @@ def main():
         print('この商品は売り切れています。')
         return
 
-    mnrate_low_price = MONORATE(asin)
+    mnrate_low_price, product_name = MONORATE(asin)
     mnrate_low_price = mnrate_low_price.replace('￥','').replace(',','')
 
     if mer_slt_price > mnrate_low_price: # 金額がモノレート最低金額よりも高くなった場合
@@ -90,9 +92,11 @@ def main():
     jsonData = MERCARIDATA
     newData = {
         "id": randomId(),
+        "name": str(product_name),
         "asin": asin,
         "status": status,
-        "mercariPrice": int(mer_slt_price),
+        "mercariPrice": [int(mer_slt_price)],
+        "mnratePrice": [int(mnrate_low_price)],
         "mercariId": mercariId
     }
     jsonData.append(newData)
