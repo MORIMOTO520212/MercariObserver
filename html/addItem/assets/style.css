@@ -1,0 +1,160 @@
+body{
+    background-color: #323639;
+    margin: 0;
+}
+.header{
+    font-size: 0px;
+}
+.header div.a{
+    background-color: #76ff76;
+    display: inline-block;
+    width: 25%;
+    height: 5px;
+}
+.header div.b{
+    background-color: #eb4a4a;
+    display: inline-block;
+    width: 50%;
+    height: 5px;
+}
+.header div.c{
+    background-color: #4ed6ff;
+    display: inline-block;
+    width: 25%;
+    height: 5px;
+}
+
+.asin_input {
+	position: relative;
+	width: 60%;
+	margin: 40px auto;
+}
+.asin_input input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='text']:focus {
+	border: 1px solid #3cda7e;
+	outline: none;
+	box-shadow: 0 0 5px 1px #69da3c80;
+}
+
+.submit{
+    margin: 0 auto;
+    width: 102px;
+}
+
+#button {
+    padding: 10px 35px;
+    font-size: 1vw;
+    background-color: #000;
+    color: #4cffb5;
+    border: solid 1px #54e9b7;
+    box-shadow: 0 0 12px 1px #3aecc098;
+}
+
+div.note{
+    color: #eee;
+    font-size: 0.8vw;
+}
+
+div.main{
+    margin: 0;
+    font-size: 0px;
+}
+
+div.left{
+    display: inline-block;
+    width: 25%;
+    height: 100px;
+    vertical-align: top;
+}
+div.center{
+    display: inline-block;
+    width: 50%;
+    height: 100px;
+    vertical-align: top;
+}
+div.transaction{
+    display: inline-block;
+    width: 25%;
+    height: 100px;
+    vertical-align: top;
+}
+
+div.block{
+    width: 90%;
+    padding: 4px;
+    margin: 10px auto;
+    border: solid 1px #605e6c;
+}
+
+div.type{
+    color: #4af36f;
+    font-weight: bold;
+    font-size: 1.2vw;
+}
+div.type.a{
+    color: #f3804a;
+    font-weight: bold;
+    font-size: 1.2vw;
+}
+
+div.product_name{
+    color: #eb4a4a;
+    font-weight: bold;
+    font-size: 0.8vw;
+}
+
+div.system_id span{
+    color: #919191;
+    font-weight: bold;
+    font-size: 0.8vw;
+}
+div.system_id{
+    color: #eee;
+    font-size: 0.8vw;
+}
+div.price span{
+    color: #919191;
+    font-size: 0.8vw;
+}
+div.price{
+    color: #eee;
+    font-size: 0.8vw;
+}
+div.profit span{
+    color: #919191;
+    font-size: 0.8vw;
+}
+div.profit{
+    color: #eee;
+    font-size: 0.8vw;
+}
+div.date{
+    color: #919191;
+    font-size: 0.8vw;
+    text-align: right;
+}
+div.btn{
+    margin: 10px auto;
+    width: 90%;
+}
+.remove-btn{
+    margin-right: 15px;
+}
+select{
+    background-color: #000000;
+    color: #4cffb5;
+    border: solid 1px #54e9b7;
+    box-shadow: 0 0 12px 1px #3aecc098;
+    font-size: 1vw;
+    padding: 10px;
+}

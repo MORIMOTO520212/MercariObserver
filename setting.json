@@ -1,3 +1,4 @@
 {
-    "mercari_selling": "data/mercari_selling.json"
+    "mercari_selling": "data/mercari_selling.json",
+    "transaction": "data/transaction.json"
 }

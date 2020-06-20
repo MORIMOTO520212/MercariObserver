@@ -5,10 +5,13 @@
         "asin": "B07X47QTN3",
         "status": "selling",
         "mercariPrice": [
-            30000
+            30000,
+            29000
         ],
         "mnratePrice": [
-            31856
+            31856,
+            31356,
+            30856
         ],
         "mercariId": "m66065960148"
     }

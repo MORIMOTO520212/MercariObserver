@@ -1,0 +1,39 @@
+[
+    {
+        "id": "SDHUI3FI98",
+        "asin": "B07X779ZK5",
+        "mercariId": "m54209662507",
+        "date": "2020/05/24 01:42",
+        "changeDetails": {
+            "soldout": false,
+            "add": {
+                "mercariPrice": 5000,
+                "mnratePrice": 5000,
+                "Profit": 5000
+            },
+            "mercariChange": {
+                "before": 5000,
+                "after": 5000
+            },
+            "mnrateChange": {
+                "before": 5000,
+                "after": 5000
+            }
+        }
+    },
+    {
+        "id": "O9H86F07ZP",
+        "asin": "B07X47QTN3",
+        "mercariId": "m66065960148",
+        "date": "2020/05/24 01:45",
+        "changeDetails": {
+            "soldout": false,
+            "add": false,
+            "mercariChange": false,
+            "mnrateChange": {
+                "before": 31356,
+                "after": 30856
+            }
+        }
+    }
+]
