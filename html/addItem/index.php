@@ -80,42 +80,54 @@
         var selected = $("#select").children("option:selected");
         var selectedValue = selected.val();
         console.log("トランザクション表示件数："+selectedValue);
-
+        transaction_count = selectedValue; // 履歴表示数
+        
         function past(transaction, mercari_selling){
-            id = transaction[transaction.length-1].id;
+            for(var i = Object.keys(transaction).length-1; i >= (Object.keys(transaction).length-1)-transaction_count; i--){ // 表示数分ループ
+                id = transaction[i].id;
+                m_s_element = mercari_selling.find((element) => { // mercari_selling.jsonからidを探す
+                    return (element.id == id)
+                });
+                //------------------------------//
+                product_name = m_s_element.name; // ここで発生するエラーは”jsonのデータがループ数より少ない”場合に発生するので正常な挙動です。
+                console.log(product_name);
+                //------------------------------//
+            }
+        }
 
-            m_s_element = mercari_selling.find((element) => {
-                return (element.id == id)
+        var _size = 0;
+        var _size2= 0;
+        var _transactionData = '';
+        var transactionData;
+        var mercari_sellingData;
+
+        function t_d(data){
+            transactionData = data;
+        }
+        function m_s_d(data){
+            mercari_sellingData = data;
+        }
+
+        function interval(){
+            $.post('response.php?mode=transaction', {}, function(data){ // jQuery POST
+                jsonData = JSON.parse(data);
+                if (_size != jsonData.length){
+                    _size = jsonData.length;
+                    t_d(jsonData);
+                }
             });
-            //------------------------------
-            product_name = m_s_element.name;
-            console.log(product_name);
+            $.post('response.php?mode=mercari_selling', {}, function(data){
+                jsonData = JSON.parse(data);
+                if (_size2 != jsonData.length){
+                    _size2 = jsonData.length;
+                    m_s_d(jsonData);
+                }
+            });
+            if (_transactionData != Object.keys(transactionData).length){
+                past(transactionData, mercari_sellingData);
+                _transactionData = Object.keys(transactionData).length;
+            }
         }
-
-var _size = 0;
-var _size2= 0;
-var _transactionData = '';
-function interval(){
-    var transactionData, mercari_selling;
-    $.post('response.php?mode=transaction', {}, function(data){
-        jsonData = JSON.parse(data);
-        if (_size != jsonData.length){
-            _size = jsonData.length;
-            transactionData = jsonData;
-        }
-    });
-    $.post('response.php?mode=mercari_selling', {}, function(data){
-        jsonData = JSON.parse(data);
-        if (_size2 != jsonData.length){
-            _size2 = jsonData.length;
-            mercari_selling = jsonData;
-        }
-    });
-    if (_transactionData != transactionData.length){
-        past(transactionData, mercari_sellingData);
-        _transactionData = transactionData.length;
-    }
-}
-setInterval(interval, 1000);
+        setInterval(interval, 1000);
     </script>
 </html>
